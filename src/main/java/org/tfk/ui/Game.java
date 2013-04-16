@@ -13,6 +13,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.util.ResourceBundle;
 import java.util.Locale;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
 
 /**
  * The main frame class Game.
@@ -41,7 +44,12 @@ public class Game {
         frame = new JFrame();
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+<<<<<<< HEAD:org/tfk/ui/Game.java
         frame.setSize(400,350);
+=======
+        frame.setSize(800, 600);
+        frame.setLayout(new GridBagLayout());
+>>>>>>> 15063f8973de32dc4486a21178734b19b72c0e98:src/main/java/org/tfk/ui/Game.java
 
         //Menu Bar
         menuBar = new JMenuBar();
@@ -52,13 +60,18 @@ public class Game {
         menuBar.add(menuOptions);
         JMenuItem menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
         menuOptions.add(menuItemExit);
-
-        frame.setVisible(true); //set visible after MenuBar and before buttons
+        menuItemExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent){
+                System.exit(0);
+            }
+        });       
 
         //Button Credits
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
         buttonCredits.setBounds(10, 10, 170, 30);
-        frame.add(buttonCredits);        
+        frame.add(buttonCredits);
+
+        frame.setVisible(true);
     }
 
 }
